@@ -2,7 +2,8 @@ name: Update Scholar Data
 
 on:
   schedule:
-    - cron: '*/15 * * * *'  # Her 15 dakikada bir çalışır
+    - cron: '*/5 * * * *'  # Her 15 dakikada bir çalışır
+  workflow_dispatch:  # Manuel çalıştırma seçeneği
 
 jobs:
   update-data:
@@ -19,7 +20,9 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
         
-    - name: Run script
-      run: python GoogleAkademik.py
+    - name: Run Google Scholar Update
+      run: |
+        python GoogleAkademik.py
+        python AkademisyenMakaleler.py
       env:
         MONGODB_URI: ${{ secrets.MONGODB_URI }}
