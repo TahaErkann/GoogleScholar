@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
 import time
+import os
 
 def akademisyen_verileri():
     headers = {
@@ -13,8 +14,8 @@ def akademisyen_verileri():
                               "oqAqSxsAAAAJ", "xzef-AYAAAAJ", "lGTBW8AAAAAJ", "ekzy6EUAAAAJ", 
                               "slUA7yUAAAAJ", "HV4FNxsAAAAJ", "IWlhm-cAAAAJ", "zEd9GiEAAAAJ"]
 
-    # MongoDB Atlas bağlantısı
-    connection_string = "mongodb+srv://erkantaha0303:3v5EuhsyA5CTxfIN@vtyscholar.y59ie.mongodb.net/"
+    # MongoDB bağlantısı - Environment variable'dan al
+    connection_string = os.getenv('MONGODB_URI', "mongodb+srv://erkantaha0303:3v5EuhsyA5CTxfIN@vtyscholar.y59ie.mongodb.net/")
     sunucu = MongoClient(connection_string)
     vt = sunucu["SoftwareEngineering"]
 
@@ -59,4 +60,5 @@ def akademisyen_verileri():
     print("Tüm akademisyenler başarıyla güncellendi.")
 
 
-akademisyen_verileri()
+if __name__ == "__main__":
+    akademisyen_verileri()
