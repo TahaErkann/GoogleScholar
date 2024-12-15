@@ -1,0 +1,25 @@
+name: Update Scholar Data
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'  # Her 15 dakikada bir çalışır
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+        
+    - name: Run script
+      run: python GoogleAkademik.py
+      env:
+        MONGODB_URI: ${{ secrets.MONGODB_URI }}
