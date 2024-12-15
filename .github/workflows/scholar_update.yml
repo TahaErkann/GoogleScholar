@@ -2,7 +2,7 @@ name: Update Scholar Data
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Her 15 dakikada bir çalışır
+    - cron: '*/10 * * * *'  # Her 15 dakikada bir çalışır
   workflow_dispatch:  # Manuel çalıştırma seçeneği
 
 jobs:
