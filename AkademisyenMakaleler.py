@@ -15,7 +15,7 @@ def makale_verileri():
                               "slUA7yUAAAAJ", "HV4FNxsAAAAJ", "IWlhm-cAAAAJ", "zEd9GiEAAAAJ"]
 
     # MongoDB bağlantısı - Environment variable'dan al
-    connection_string = os.getenv('MONGODB_URI', "mongodb+srv://erkantaha0303:3v5EuhsyA5CTxfIN@vtyscholar.y59ie.mongodb.net/")
+    connection_string = os.getenv('MONGODB_URI', "mongodb+srv://erkantaha0303:3v5EuhsyA5CTxfIN@vtyscholar.y59ie.mongodb.net")
     sunucu = MongoClient(connection_string)
     vt = sunucu["SoftwareEngineering"]
 
